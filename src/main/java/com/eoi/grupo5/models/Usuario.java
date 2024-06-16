@@ -27,8 +27,7 @@ public class Usuario {
     @Column(name="apellidos", length = 45)
     private String apellidos;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_detalles", referencedColumnName = "id")
+    @OneToOne(mappedBy = "usu",cascade = CascadeType.ALL)
     private DetallesUsuario detalles;
 
     @OneToMany(mappedBy = "usu")

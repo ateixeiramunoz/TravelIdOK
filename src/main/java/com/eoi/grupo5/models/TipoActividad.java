@@ -6,20 +6,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "asientos")
+@Table(name = "tipo_actividad")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Asientos {
+public class TipoActividad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String numero;
+    @Column(name = "nombre", length = 45, nullable = false)
+    private String nombre;
 
-    private Double precio;
+    @Column(name = "descripcion", length = 150)
+    private String descripcion;
+
+    @OneToMany(mappedBy = "tipo")
+    private Set<Actividad> actividades;
 
 }

@@ -33,7 +33,9 @@ public class DetallesUsuario {
     @Column(name = "telefono", length = 15)
     private String telefono;
 
-    @OneToOne(mappedBy = "detalles")
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
     private Usuario usu;
 
 }
