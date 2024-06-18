@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,7 @@ public class Actividad {
     private TipoActividad tipo;
 
     @ManyToMany(mappedBy = "actividades")
-    private Set<Reserva> reservas;
+    private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_localizacion", foreignKey = @ForeignKey(name = "fk_actividades_local"), nullable = false)
