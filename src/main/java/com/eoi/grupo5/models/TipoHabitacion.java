@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -30,6 +31,6 @@ public class TipoHabitacion {
     private String descripcion;
 
     @OneToMany(mappedBy = "tipo")
-    private Set<Habitacion> habitaciones;
+    private Set<Habitacion> habitaciones = new HashSet<>();
 
 }

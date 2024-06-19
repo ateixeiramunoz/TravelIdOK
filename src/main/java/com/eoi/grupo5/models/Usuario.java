@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -31,7 +32,7 @@ public class Usuario {
     private DetallesUsuario detalles;
 
     @OneToMany(mappedBy = "usu")
-    private List<Reserva> reservas;
+    private Set<Reserva> reservas = new HashSet<>();
 
     @Override
     public String toString() {

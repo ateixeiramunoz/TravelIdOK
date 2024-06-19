@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -36,7 +37,7 @@ public class Hotel {
     private Double precio;
 
     @OneToMany(mappedBy = "hotel")
-    private Set<Habitacion> habitaciones;
+    private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_localizacion", foreignKey = @ForeignKey(name = "fk_hoteles_local"), nullable = false)

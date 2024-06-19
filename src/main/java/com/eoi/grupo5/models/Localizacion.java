@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,19 +28,19 @@ public class Localizacion {
     private String codigo;
 
     @OneToMany(mappedBy = "destino")
-    private Set<Vuelo> vuelosOrigen;
+    private Set<Vuelo> vuelosOrigen = new HashSet<>();
 
     @OneToMany(mappedBy = "destino")
-    private Set<Vuelo> vuelosDestino;
+    private Set<Vuelo> vuelosDestino = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_pais", foreignKey = @ForeignKey(name = "fk_local_paises"), nullable = false)
     private Pais pais;
 
     @OneToMany(mappedBy = "localizacion")
-    private Set<Hotel> hoteles;
+    private Set<Hotel> hoteles = new HashSet<>();
 
     @OneToMany(mappedBy = "localizacion")
-    private Set<Actividad> actividades;
+    private Set<Actividad> actividades = new HashSet<>();
 
 }

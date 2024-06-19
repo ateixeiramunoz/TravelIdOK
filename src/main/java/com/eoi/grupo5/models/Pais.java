@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,6 +25,6 @@ public class Pais {
     private String nombre;
 
     @OneToMany(mappedBy="pais")
-    private Set<Localizacion> localizaciones;
+    private Set<Localizacion> localizaciones = new HashSet<>();
 
 }

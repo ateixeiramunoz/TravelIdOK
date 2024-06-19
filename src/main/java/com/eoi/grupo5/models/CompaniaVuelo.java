@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,6 @@ public class CompaniaVuelo {
     private String contacto;
 
     @OneToMany(mappedBy = "compania")
-    private Set<Vuelo> vuelos;
+    private Set<Vuelo> vuelos = new HashSet<>();
 
 }

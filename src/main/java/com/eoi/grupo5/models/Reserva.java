@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -37,21 +38,21 @@ public class Reserva {
     name = "asientos_reservados",
     joinColumns = @JoinColumn(name = "id_reserva", foreignKey = @ForeignKey(name = "fk_asires_reservas")),
     inverseJoinColumns = @JoinColumn(name = "id_asiento", foreignKey = @ForeignKey(name = "fk_asires_asientos")))
-    private Set<Asiento> asientos;
+    private Set<Asiento> asientos = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
     name = "habitaciones_reservadas",
     joinColumns = @JoinColumn(name = "id_reserva", foreignKey = @ForeignKey(name = "fk_hreser_reservas")),
     inverseJoinColumns = @JoinColumn(name = "id_habitacion", foreignKey = @ForeignKey(name = "fk_hreser_habitaciones")))
-    private Set<Habitacion> habitaciones;
+    private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
     name = "actividades_reservadas",
     joinColumns = @JoinColumn(name = "id_reserva", foreignKey = @ForeignKey(name = "fk_actres_reservas")),
     inverseJoinColumns = @JoinColumn(name = "id_actividad", foreignKey = @ForeignKey(name = "fk_actres_actividades")))
-    private Set<Actividad> actividades;
+    private Set<Actividad> actividades = new HashSet<>();
 
     @OneToOne(mappedBy = "reserva")
     private Pago pago;
