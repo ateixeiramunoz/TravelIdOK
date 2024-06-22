@@ -37,5 +37,11 @@ public class Usuario {
     @Basic(optional = false)
     private boolean active = true;
 
+    // Constructor
+    public Usuario(String nombreUsuario, String password) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+    }
+
 
 }
