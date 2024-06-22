@@ -41,6 +41,10 @@ public class Habitacion {
     @ManyToMany(mappedBy = "habitaciones")
     private Set<Reserva> reservas = new HashSet<>();
 
-
+    public Habitacion(Integer numero, Byte capacidad, Byte numeroCamas){
+        this.numero = numero;
+        this.capacidad = capacidad;
+        this.numeroCamas = numeroCamas;
+    }
 
 }
