@@ -1,10 +1,7 @@
 package com.eoi.grupo5.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +12,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Asiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,5 +35,10 @@ public class Asiento {
     @ManyToOne
     @JoinColumn(name = "idVuelo", foreignKey = @ForeignKey(name = "fk_asi_vuelos"), nullable = false)
     private Vuelo vuelo;
+
+    public Asiento(String numero, Double precio) {
+        this.numero = numero;
+        this.precio = precio;
+    }
 
 }

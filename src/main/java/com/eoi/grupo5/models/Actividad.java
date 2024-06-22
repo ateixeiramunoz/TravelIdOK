@@ -45,4 +45,11 @@ public class Actividad {
     @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fk_actividades_local"), nullable = false)
     private Localizacion localizacion;
 
+    public Actividad(String nombre, String descripcion, TipoActividad tipo, Localizacion localizacion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.localizacion = localizacion;
+    }
+
 }
