@@ -1,38 +1,37 @@
 package com.eoi.grupo5.repos;
 
-import com.eoi.grupo5.models.Actividad;
+import com.eoi.grupo5.models.Pago;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ActividadRepoImpl implements Repo<Actividad> {
+public class PagoRepoImpl implements Repo<Pago> {
 
     private EntityManager em;
 
-    public ActividadRepoImpl(EntityManager em) {
+    public PagoRepoImpl(EntityManager em) {
         this.em = em;
     }
 
     @Override
-    public List<Actividad> listar() {
-        return em.createQuery("SELECT a FROM Actividad a", Actividad.class).getResultList();
+    public List<Pago> listar() {
+        return em.createQuery("SELECT p FROM Pago p", Pago.class).getResultList();
     }
 
     @Override
-    public Optional<Actividad> porId(Integer id) {
-        return Optional.ofNullable(em.find(Actividad.class, id));
-
+    public Optional<Pago> porId(Integer id) {
+        return Optional.ofNullable(em.find(Pago.class, id));
     }
 
     @Override
-    public void guardar(Actividad actividad) {
+    public void guardar(Pago pago) {
         try {
             em.getTransaction().begin();
-            if(actividad.getId() != null && actividad.getId() > 0) {
-                em.merge(actividad);
+            if(pago.getId() != null && pago.getId() > 0) {
+                em.merge(pago);
             } else {
-                em.persist(actividad);
+                em.persist(pago);
             }
             em.getTransaction().commit();
         } catch(Exception e) {
@@ -45,9 +44,9 @@ public class ActividadRepoImpl implements Repo<Actividad> {
     public void eliminar(Integer id) {
         try {
             em.getTransaction().begin();
-            Optional<Actividad> act= porId(id);
-            if(act.isPresent()) {
-                em.remove(act.get());
+            Optional<Pago> pago= porId(id);
+            if(pago.isPresent()) {
+                em.remove(pago.get());
                 em.getTransaction().commit();
             }
         } catch(Exception e) {
