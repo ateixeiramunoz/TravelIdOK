@@ -1,9 +1,6 @@
 package com.eoi.grupo5.servicios;
 
-import com.eoi.grupo5.models.Actividad;
-import com.eoi.grupo5.models.Asiento;
-import com.eoi.grupo5.models.Habitacion;
-import com.eoi.grupo5.models.Usuario;
+import com.eoi.grupo5.models.*;
 import com.eoi.grupo5.repos.*;
 import jakarta.persistence.EntityManager;
 
@@ -16,18 +13,22 @@ public class ServicioAppImpl implements ServicioApp{
     private Repo<Actividad> repoAct;
     private Repo<Asiento> repoAsi;
     private Repo<Habitacion> repoHab;
+    private Repo<Pago> repoPago;
+    private Repo<Reserva> repoReserv;
 
     public ServicioAppImpl(EntityManager em){
         this.repoUsu = new UsuarioRepoImpl(em);
         this.repoAct  = new ActividadRepoImpl(em);
         this.repoAsi  = new AsientoRepoImpl(em);
         this.repoHab  = new HabitacionRepoImpl(em);
+        this.repoPago  = new PagoRepoImpl(em);
+        this.repoReserv = new ReservaRepoImpl(em);
     }
 
     // Usuario
 
     @Override
-    public List<Usuario> listaUsuario() {
+    public List<Usuario> listarUsuarios() {
         return repoUsu.listar();
     }
 
@@ -49,7 +50,7 @@ public class ServicioAppImpl implements ServicioApp{
     // Actividad
 
     @Override
-    public List<Actividad> listaActividad() {
+    public List<Actividad> listarActividades() {
         return repoAct.listar();
     }
 
@@ -71,7 +72,7 @@ public class ServicioAppImpl implements ServicioApp{
     // Asiento
 
     @Override
-    public List<Asiento> listaAsiento() {
+    public List<Asiento> listarAsientos() {
         return repoAsi.listar();
     }
 
@@ -93,7 +94,7 @@ public class ServicioAppImpl implements ServicioApp{
     // Habitación
 
     @Override
-    public List<Habitacion> listaHabitacion() {
+    public List<Habitacion> listarHabitaciones() {
         return repoHab.listar();
     }
 
@@ -103,13 +104,57 @@ public class ServicioAppImpl implements ServicioApp{
     }
 
     @Override
-    public void guardarHabitacon(Habitacion habitacion) {
+    public void guardarHabitacion(Habitacion habitacion) {
         repoHab.guardar(habitacion);
     }
 
     @Override
     public void eliminarHabitacion(Integer id) {
         repoHab.eliminar(id);
+    }
+
+    // Pago
+
+    @Override
+    public List<Pago> listarPagos() {
+        return repoPago.listar();
+    }
+
+    @Override
+    public Optional<Pago> pagoporId(Integer id) {
+        return repoPago.porId(id);
+    }
+
+    @Override
+    public void guardarPago(Pago pago) {
+        repoPago.guardar(pago);
+    }
+
+    @Override
+    public void eliminarPago(Integer id) {
+        repoPago.eliminar(id);
+    }
+
+    // Reserva
+
+    @Override
+    public List<Reserva> listarReservas() {
+        return repoReserv.listar();
+    }
+
+    @Override
+    public Optional<Reserva> reservaporId(Integer id) {
+        return repoReserv.porId(id);
+    }
+
+    @Override
+    public void guardarReserva(Reserva reserva) {
+        repoReserv.guardar(reserva);
+    }
+
+    @Override
+    public void eliminarReserva(Integer id) {
+        repoReserv.eliminar(id);
     }
 
 }

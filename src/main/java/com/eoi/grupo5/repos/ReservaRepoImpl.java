@@ -1,38 +1,37 @@
 package com.eoi.grupo5.repos;
 
-import com.eoi.grupo5.models.Actividad;
+import com.eoi.grupo5.models.Reserva;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ActividadRepoImpl implements Repo<Actividad> {
+public class ReservaRepoImpl implements Repo<Reserva> {
 
     private EntityManager em;
 
-    public ActividadRepoImpl(EntityManager em) {
+    public ReservaRepoImpl(EntityManager em) {
         this.em = em;
     }
 
     @Override
-    public List<Actividad> listar() {
-        return em.createQuery("SELECT a FROM Actividad a", Actividad.class).getResultList();
+    public List<Reserva> listar() {
+        return em.createQuery("SELECT r FROM Reserva r", Reserva.class).getResultList();
     }
 
     @Override
-    public Optional<Actividad> porId(Integer id) {
-        return Optional.ofNullable(em.find(Actividad.class, id));
-
+    public Optional<Reserva> porId(Integer id) {
+        return Optional.ofNullable(em.find(Reserva.class, id));
     }
 
     @Override
-    public void guardar(Actividad actividad) {
+    public void guardar(Reserva reserva) {
         try {
             em.getTransaction().begin();
-            if(actividad.getId() != null && actividad.getId() > 0) {
-                em.merge(actividad);
+            if(reserva.getId() != null && reserva.getId() > 0) {
+                em.merge(reserva);
             } else {
-                em.persist(actividad);
+                em.persist(reserva);
             }
             em.getTransaction().commit();
         } catch(Exception e) {
@@ -45,9 +44,9 @@ public class ActividadRepoImpl implements Repo<Actividad> {
     public void eliminar(Integer id) {
         try {
             em.getTransaction().begin();
-            Optional<Actividad> act= porId(id);
-            if(act.isPresent()) {
-                em.remove(act.get());
+            Optional<Reserva> reserva= porId(id);
+            if(reserva.isPresent()) {
+                em.remove(reserva.get());
                 em.getTransaction().commit();
             }
         } catch(Exception e) {
