@@ -34,7 +34,7 @@ public class Localizacion {
     private Set<Vuelo> vuelosDestino = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "id_pais", foreignKey = @ForeignKey(name = "fk_local_paises"), nullable = false)
+    @JoinColumn(name = "idPais", foreignKey = @ForeignKey(name = "fk_local_paises"), nullable = false)
     private Pais pais;
 
     @OneToMany(mappedBy = "localizacion")

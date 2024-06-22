@@ -23,30 +23,28 @@ public class Vuelo {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "fecha_salida")
+    @Column(name = "fechaSalida")
     private LocalDateTime fechaSalida;
 
-    @Column(name = "fecha_llegada")
+    @Column(name = "fechaLlegada")
     private LocalDateTime fechaLlegada;
 
     @Column(name = "precio")
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "id_compania", foreignKey = @ForeignKey(name = "fk_vuelos_companias"), nullable = false)
+    @JoinColumn(name = "idCompania", foreignKey = @ForeignKey(name = "fk_vuelos_companias"), nullable = false)
     private CompaniaVuelo compania;
 
     @ManyToOne
-    @JoinColumn(name = "id_origen", foreignKey = @ForeignKey(name = "fk_vuelos_origen"), nullable = false)
+    @JoinColumn(name = "idOrigen", foreignKey = @ForeignKey(name = "fk_vuelos_origen"), nullable = false)
     private Localizacion origen;
 
     @ManyToOne
-    @JoinColumn(name = "id_destino", foreignKey = @ForeignKey(name = "fk_vuelos_destino"), nullable = false)
+    @JoinColumn(name = "idDestino", foreignKey = @ForeignKey(name = "fk_vuelos_destino"), nullable = false)
     private Localizacion destino;
-
 
     @OneToMany(mappedBy = "vuelo")
     private Set<Asiento> asientos = new HashSet<>();
-
 
 }

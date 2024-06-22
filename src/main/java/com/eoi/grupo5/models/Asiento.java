@@ -28,14 +28,14 @@ public class Asiento {
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "id_categoria", foreignKey = @ForeignKey(name = "fk_asi_cat"), nullable = false)
+    @JoinColumn(name = "idCategoria", foreignKey = @ForeignKey(name = "fk_asi_cat"), nullable = false)
     private CategoriaAsiento categoria;
 
     @ManyToMany(mappedBy = "asientos")
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "id_vuelo", foreignKey = @ForeignKey(name = "fk_asi_vuelos"), nullable = false)
+    @JoinColumn(name = "idVuelo", foreignKey = @ForeignKey(name = "fk_asi_vuelos"), nullable = false)
     private Vuelo vuelo;
 
 }

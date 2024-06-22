@@ -27,15 +27,15 @@ public class Habitacion {
     @Column(name="capacidad")
     private Byte capacidad;
 
-    @Column(name = "numero_camas")
+    @Column(name = "numeroCamas")
     private Byte numeroCamas;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo", foreignKey = @ForeignKey(name = "fk_habitaciones_tipo"), nullable = false)
+    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fk_habitaciones_tipo"), nullable = false)
     private TipoHabitacion tipo;
 
     @ManyToOne
-    @JoinColumn(name = "id_hotel", foreignKey = @ForeignKey(name = "fk_habitaciones_hoteles"), nullable = false)
+    @JoinColumn(name = "idHotel", foreignKey = @ForeignKey(name = "fk_habitaciones_hoteles"), nullable = false)
     private Hotel hotel;
 
     @ManyToMany(mappedBy = "habitaciones")

@@ -40,7 +40,7 @@ public class Hotel {
     private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "id_localizacion", foreignKey = @ForeignKey(name = "fk_hoteles_local"), nullable = false)
+    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fk_hoteles_local"), nullable = false)
     private Localizacion localizacion;
 
 }

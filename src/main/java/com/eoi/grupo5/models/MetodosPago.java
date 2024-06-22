@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "metodos_pago")
@@ -23,8 +21,5 @@ public class MetodosPago {
 
     @Column(name = "metodo", length = 45, nullable = false)
     private String metodo;
-
-    @OneToMany(mappedBy = "metodoPago")
-    private Set<Pago> pagos = new HashSet<>();
 
 }

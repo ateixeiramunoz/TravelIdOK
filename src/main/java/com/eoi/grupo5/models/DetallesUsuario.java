@@ -27,11 +27,14 @@ public class DetallesUsuario {
     @Column(name = "edad")
     private Integer edad;
 
-    @Column(name = "contrasenya", length = 45)
-    private String contrasenya;
-
     @Column(name = "telefono", length = 15)
     private String telefono;
+
+    @Column(name="nombre", nullable = false, length = 45)
+    private String nombre;
+
+    @Column(name="apellidos", length = 45)
+    private String apellidos;
 
     @OneToOne
     @MapsId

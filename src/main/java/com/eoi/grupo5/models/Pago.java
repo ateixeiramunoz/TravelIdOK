@@ -23,14 +23,13 @@ public class Pago {
     @Column(name = "importe")
     private Double importe;
 
-    @Column(name = "fecha_pago")
+    @Column(name = "fechaPago")
     private LocalDateTime fechaPago;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_reserva", referencedColumnName = "id", nullable = false)
+    @OneToOne(mappedBy = "pago", cascade = CascadeType.ALL)
     private Reserva reserva;
 
     @ManyToOne
-    @JoinColumn(name = "id_metodo_pago", foreignKey = @ForeignKey(name = "fk_pagos_metodos"), nullable = false)
+    @JoinColumn(name = "idMetodoPago", foreignKey = @ForeignKey(name = "fk_pagos_metodos"), nullable = false)
     private MetodosPago metodoPago;
 }

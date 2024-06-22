@@ -28,21 +28,21 @@ public class Actividad {
     @Column(name = "descripcion", length = 150)
     private String descripcion;
 
-    @Column(name = "fecha_inicio")
+    @Column(name = "fechaInicio")
     private LocalDateTime fechaInicio;
 
-    @Column(name = "fecha_fin")
+    @Column(name = "fechaFin")
     private LocalDateTime fechaFin;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo", foreignKey = @ForeignKey(name = "fk_acti_tipo"), nullable = false)
+    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fk_acti_tipo"), nullable = false)
     private TipoActividad tipo;
 
     @ManyToMany(mappedBy = "actividades")
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "id_localizacion", foreignKey = @ForeignKey(name = "fk_actividades_local"), nullable = false)
+    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fk_actividades_local"), nullable = false)
     private Localizacion localizacion;
 
 }

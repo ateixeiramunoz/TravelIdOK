@@ -18,15 +18,15 @@ import java.util.Set;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name="nombre", nullable = false, length = 45)
-    private String nombre;
+    @Column(name = "nombreUsuario", length = 45)
+    private String nombreUsuario;
 
-    @Column(name="apellidos", length = 45)
-    private String apellidos;
+    @Column(name = "password", length = 45)
+    private String password;
 
     @OneToOne(mappedBy = "usu",cascade = CascadeType.ALL)
     private DetallesUsuario detalles;
@@ -34,14 +34,8 @@ public class Usuario {
     @OneToMany(mappedBy = "usu")
     private Set<Reserva> reservas = new HashSet<>();
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", detalles=" + detalles +
-                ", reservas=" + reservas +
-                '}';
-    }
+    @Basic(optional = false)
+    private boolean active = true;
+
+
 }
