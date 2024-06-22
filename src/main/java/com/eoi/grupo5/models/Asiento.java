@@ -37,5 +37,4 @@ public class Asiento {
     @ManyToOne
     @JoinColumn(name = "idVuelo", foreignKey = @ForeignKey(name = "fk_asi_vuelos"), nullable = false)
     private Vuelo vuelo;
-
 }

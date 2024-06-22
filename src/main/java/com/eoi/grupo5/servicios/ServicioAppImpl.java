@@ -1,5 +1,6 @@
 package com.eoi.grupo5.servicios;
 
+
 import com.eoi.grupo5.models.Usuario;
 import com.eoi.grupo5.repos.Repo;
 import com.eoi.grupo5.repos.UsuarioRepoImpl;
@@ -11,10 +12,7 @@ import java.util.Optional;
 public class ServicioAppImpl implements ServicioApp{
 
     private Repo<Usuario> repoUsu;
-
-    public ServicioAppImpl(EntityManager em){
-        this.repoUsu = new UsuarioRepoImpl(em);
-    }
+    public ServicioAppImpl(EntityManager em){this.repoUsu = new UsuarioRepoImpl(em);}
 
 
     @Override
@@ -36,4 +34,5 @@ public class ServicioAppImpl implements ServicioApp{
     public void eliminar(Integer id) {
         repoUsu.eliminar(id);
     }
+
 }
