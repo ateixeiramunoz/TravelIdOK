@@ -1,5 +1,6 @@
 package com.eoi.grupo5;
 
+import com.eoi.grupo5.models.Habitacion;
 import com.eoi.grupo5.models.Usuario;
 import com.eoi.grupo5.servicios.ServicioApp;
 import com.eoi.grupo5.servicios.ServicioAppImpl;
@@ -17,8 +18,9 @@ public class MainPrueba {
 
         System.out.println("================= Creamos un nuevo Usuario =================");
         Usuario usu = new Usuario("Pepito", "pepito123");
-        srvcApp.guardar(usu);
+        srvcApp.guardarUsuario(usu);
         System.out.println(usu);
-
+        System.out.println("================= Creamos un nuevo Usuario =================");
+        System.out.println(srvcApp.usuarioporId(1));
     }
 }
