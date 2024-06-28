@@ -11,7 +11,6 @@ import java.util.List;
 @Controller
 public class ActividadController {
 
-
     private final ServicioActividad servicio;
 
     public ActividadController(ServicioActividad servicio) {
@@ -24,6 +23,5 @@ public class ActividadController {
         modelo.addAttribute("lista", actividades);
         return "actividades";
     }
-
 
 }

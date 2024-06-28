@@ -5,11 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/conocenos")
-public class ConocenosCtrl {
+@RequestMapping("/")
+public class InicioController {
 
     @GetMapping
+    public String inicio() {
+        return "index";
+    }
+
+    @GetMapping("/conocenos")
     public String conocenos() {
         return "about";
     }
+
 }
