@@ -31,11 +31,11 @@ public class Habitacion {
     private Byte numeroCamas;
 
     @ManyToOne
-    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fk_habitaciones_tipo"), nullable = false)
+    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fkHabitacionesTipo"), nullable = false)
     private TipoHabitacion tipo;
 
     @ManyToOne
-    @JoinColumn(name = "idHotel", foreignKey = @ForeignKey(name = "fk_habitaciones_hoteles"), nullable = false)
+    @JoinColumn(name = "idHotel", foreignKey = @ForeignKey(name = "fkHabitacionesHoteles"), nullable = false)
     private Hotel hotel;
 
     @ManyToMany(mappedBy = "habitaciones")

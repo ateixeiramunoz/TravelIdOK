@@ -35,14 +35,14 @@ public class Actividad {
     private LocalDateTime fechaFin;
 
     @ManyToOne
-    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fk_acti_tipo"), nullable = false)
+    @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fkActiTipo"), nullable = false)
     private TipoActividad tipo;
 
     @ManyToMany(mappedBy = "actividades")
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fk_actividades_local"), nullable = false)
+    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkActividadesLocal"), nullable = false)
     private Localizacion localizacion;
 
 

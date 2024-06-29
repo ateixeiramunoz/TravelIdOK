@@ -30,6 +30,6 @@ public class Pago {
     private Reserva reserva;
 
     @ManyToOne
-    @JoinColumn(name = "idMetodoPago", foreignKey = @ForeignKey(name = "fk_pagos_metodos"), nullable = false)
+    @JoinColumn(name = "idMetodoPago", foreignKey = @ForeignKey(name = "fkPagosMetodos"), nullable = false)
     private MetodosPago metodoPago;
 }

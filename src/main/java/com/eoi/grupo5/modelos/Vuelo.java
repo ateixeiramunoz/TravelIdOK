@@ -33,15 +33,15 @@ public class Vuelo {
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "idCompania", foreignKey = @ForeignKey(name = "fk_vuelos_companias"), nullable = false)
+    @JoinColumn(name = "idCompania", foreignKey = @ForeignKey(name = "fkVuelosCompanias"), nullable = false)
     private CompaniaVuelo compania;
 
     @ManyToOne
-    @JoinColumn(name = "idOrigen", foreignKey = @ForeignKey(name = "fk_vuelos_origen"), nullable = false)
+    @JoinColumn(name = "idOrigen", foreignKey = @ForeignKey(name = "fkVuelosOrigen"), nullable = false)
     private Localizacion origen;
 
     @ManyToOne
-    @JoinColumn(name = "idDestino", foreignKey = @ForeignKey(name = "fk_vuelos_destino"), nullable = false)
+    @JoinColumn(name = "idDestino", foreignKey = @ForeignKey(name = "fkVuelosDestino"), nullable = false)
     private Localizacion destino;
 
     @OneToMany(mappedBy = "vuelo")

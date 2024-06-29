@@ -30,28 +30,28 @@ public class Reserva {
     private boolean cancelado = false;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", foreignKey = @ForeignKey(name = "fk_reservas_usuarios"), nullable = false)
+    @JoinColumn(name = "idUsuario", foreignKey = @ForeignKey(name = "fkReservasUsuarios"), nullable = false)
     private Usuario usu;
 
     @ManyToMany
     @JoinTable(
     name = "asientosReservados",
-    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fk_asires_reservas")),
-    inverseJoinColumns = @JoinColumn(name = "idAsiento", foreignKey = @ForeignKey(name = "fk_asires_asientos")))
+    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fkAsiresReservas")),
+    inverseJoinColumns = @JoinColumn(name = "idAsiento", foreignKey = @ForeignKey(name = "fkAsiresAsientos")))
     private Set<Asiento> asientos = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
     name = "habitacionesReservadas",
-    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fk_hreser_reservas")),
-    inverseJoinColumns = @JoinColumn(name = "idHabitacion", foreignKey = @ForeignKey(name = "fk_hreser_habitaciones")))
+    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fkHreserReservas")),
+    inverseJoinColumns = @JoinColumn(name = "idHabitacion", foreignKey = @ForeignKey(name = "fkHreserHabitaciones")))
     private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
     name = "actividadesReservadas",
-    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fk_actres_reservas")),
-    inverseJoinColumns = @JoinColumn(name = "idActividad", foreignKey = @ForeignKey(name = "fk_actres_actividades")))
+    joinColumns = @JoinColumn(name = "idReserva", foreignKey = @ForeignKey(name = "fkActresReservas")),
+    inverseJoinColumns = @JoinColumn(name = "idActividad", foreignKey = @ForeignKey(name = "fkActresActividades")))
     private Set<Actividad> actividades = new HashSet<>();
 
     @OneToOne
