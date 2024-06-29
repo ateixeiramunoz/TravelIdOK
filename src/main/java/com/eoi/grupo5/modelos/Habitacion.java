@@ -38,7 +38,7 @@ public class Habitacion {
     @JoinColumn(name = "idHotel", foreignKey = @ForeignKey(name = "fkHabitacionesHoteles"), nullable = false)
     private Hotel hotel;
 
-    @ManyToMany(mappedBy = "habitaciones")
-    private Set<Reserva> reservas = new HashSet<>();
+    @OneToMany(mappedBy = "habitacion")
+    private Set<HabitacionReservada> habitacionesReservadas = new HashSet<>();
 
 }
