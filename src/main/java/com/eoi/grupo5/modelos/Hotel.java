@@ -43,4 +43,7 @@ public class Hotel {
     @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkHotelesLocal"), nullable = false)
     private Localizacion localizacion;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Imagen> imagenes = new HashSet<>();
+
 }

@@ -47,4 +47,8 @@ public class Vuelo {
     @OneToMany(mappedBy = "vuelo")
     private Set<Asiento> asientos = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "idImagen", nullable = false)
+    private Imagen imagen;
+
 }
