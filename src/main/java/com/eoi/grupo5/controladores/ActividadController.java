@@ -21,7 +21,6 @@ public class ActividadController {
     public String listaActividades(Model modelo) {
         List<Actividad> actividades = servicio.buscarEntidades();
         modelo.addAttribute("lista", actividades);
-
         return "actividades";
     }
 
