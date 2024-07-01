@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Hoteles</title>
+  <title>Vuelos</title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="Travelix Project" />
@@ -162,316 +162,54 @@
       <section id="pack" class="packages">
         <div class="container">
           <div class="gallary-header text-center">
-            <h2>Encuentra tu Hotel ideal</h2>
+            <h2>Encuentra tu Vuelo Ideal</h2>
             <p>
-              Explora nuestra selección de hoteles, desde lujosos resorts hasta
-              acogedores boutiques.<br />
-              Compara y reserva el alojamiento ideal para tu próxima
-              aventura.<br />
-              ¡Empieza tu viaje hacia una estancia inolvidable!
+              Explora nuestra selección de vuelos, desde aerolíneas de lujo hasta opciones económicas.<br />
+              Compara y reserva el vuelo ideal para tu próxima aventura.<br />
+              ¡Empieza tu viaje hacia un destino inolvidable!
             </p>
           </div>
           <!--/.gallery-header-->
           <div class="packages-content">
             <div class="row">
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg"
-                    alt="Radisson Blu Hotel"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Radisson Blu Hotel<span class="pull-right">120€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Radisson Blu Hotel</h3>
-                      <h4 class="text-dark">120€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Berlín, Alemania
+              <div class="col-12 col-lg-4 col-sm-6 d-flex" th:each="vuelo : ${vuelos}">
+                <a th:href="@{'/vuelo/' + ${vuelo.id}}" class="w-100 w-auto-sm">
+                  <div class="single-package-item">
+                    <!-- Mostrar la primera imagen del hotel o una imagen por defecto si no tiene imágenes -->
+                    <img th:src="@{${vuelo.imagen.getUrl()}} " alt="Imagen del Vuelo"/>
+
+                    <div class="single-package-item-txt">
+                      <h3 class="d-block d-sm-none d-xl-block">
+                        <span th:text="${vuelo.nombre}"></span> <span class="pull-right" th:text="${vuelo.precio} + ' €'"></span>
+                      </h3>
+                      <div class="d-none d-sm-block d-xl-none">
+                        <h3 th:text="${vuelo.nombre}">Vuelo Nombre</h3>
+                        <h4 class="text-dark" th:text=" ${vuelo.precio} + ' €'">120€</h4>
+                      </div>
+                      <div class="packages-para">
+                        <p>
+                        <span class="d-inline-block">
+                            <i class="fa fa-angle-right"></i>
+                            <span class="d-inline-block" th:text="'Origen: ' + ${vuelo.origen.getNombre()}"> Berlín, Alemania</span>
                         </span>
-                        <i class="fa fa-angle-right"></i> 4 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Excelente Ubicación
+                        </p>
+                        <p>
+                        <span class="d-inline-block">
+                            <i class="fa fa-angle-right"></i>
+                            <span class="d-inline-block" th:text="'Destino:' + ${vuelo.destino.getNombre()}"> Berlín, Alemania</span>
                         </span>
-                        <i class="fa fa-angle-right"></i> Servicios Premium
-                      </p>
+                        </p>
+                        <p th:text="${vuelo.descripcion}"></p>
+                      </div>
+                      <div class="about-btn">
+                        <button class="about-view packages-btn">Reservar</button>
+                      </div>
                     </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
                   </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
+                </a>
               </div>
               <!--/.col-->
 
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Melia_Madrid_Princesa.jpg"
-                    alt="Hotel Melia Madrid Princesa"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Melia Madrid Princesa<span class="pull-right">150€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Melia Madrid Princesa</h3>
-                      <h4 class="text-dark">150€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Madrid, España
-                        </span>
-                        <i class="fa fa-angle-right"></i> 5 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Buenas Vistas
-                        </span>
-                        <i class="fa fa-angle-right"></i> Confort extremo
-                      </p>
-                    </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
-                  </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
-              </div>
-              <!--/.col-->
-
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Hilton_Vienna_Plaza.jpg"
-                    alt="Hilton Vienna Plaza"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Hilton Vienna Plaza<span class="pull-right">160€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Hilton Vienna Plaza</h3>
-                      <h4 class="text-dark">160€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Viena, Austria
-                        </span>
-                        <i class="fa fa-angle-right"></i> 5 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Lujo contemporáneo
-                        </span>
-                        <i class="fa fa-angle-right"></i> Ubicación Céntrica
-                      </p>
-                    </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
-                  </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
-              </div>
-              <!--/.col-->
-
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Hotel_Artemide_2.jpg"
-                    alt="Hotel Artemide"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Hotel Artemide<span class="pull-right">130€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Hotel Artemide</h3>
-                      <h4 class="text-dark">130€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Roma, Italia
-                        </span>
-                        <i class="fa fa-angle-right"></i> 4 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Servicios
-                          excepcionales
-                        </span>
-                        <i class="fa fa-angle-right"></i> Confort y lujo
-                      </p>
-                    </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
-                  </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
-              </div>
-              <!--/.col-->
-
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Nobu_hotel.jpg"
-                    alt="Hotel Artemide"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Nobu Hotel<span class="pull-right">180€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Nobu Hotel</h3>
-                      <h4 class="text-dark">180€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Ibiza, España
-                        </span>
-                        <i class="fa fa-angle-right"></i> 5 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Lujo Moderno
-                        </span>
-                        <i class="fa fa-angle-right"></i> Ambiente Vibrante
-                      </p>
-                    </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
-                  </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
-              </div>
-              <!--/.col-->
-
-              <div class="col-lg-4 col-sm-6 d-flex">
-                <div class="single-package-item">
-                  <img
-                    src="/images/Hoteles/Solo_soko.jpeg"
-                    alt="package-place"
-                  />
-                  <div class="single-package-item-txt">
-                    <h3 class="d-block d-sm-none d-xl-block">
-                      Solo Sokos<span class="pull-right">130€</span>
-                    </h3>
-                    <div class="d-none d-sm-block d-xl-none">
-                      <h3>Solo Sokos</h3>
-                      <h4 class="text-dark">130€</h4>
-                    </div>
-                    <div class="packages-para">
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Helsinki, Finlandia
-                        </span>
-                        <i class="fa fa-angle-right"></i> 4 estrellas
-                      </p>
-                      <p>
-                        <span>
-                          <i class="fa fa-angle-right"></i> Estilo escandinavo
-                        </span>
-                        <i class="fa fa-angle-right"></i> Ubicación céntrica
-                      </p>
-                    </div>
-                    <!--/.packages-para-->
-                    <div class="packages-review">
-                      <p>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </p>
-                    </div>
-                    <!--/.packages-review-->
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
-                    </div>
-                    <!--/.about-btn-->
-                  </div>
-                  <!--/.single-package-item-txt-->
-                </div>
-                <!--/.single-package-item-->
-              </div>
-              <!--/.col-->
             </div>
             <!--/.row-->
           </div>

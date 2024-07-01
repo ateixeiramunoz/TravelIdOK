@@ -51,4 +51,10 @@ public class Vuelo {
     @JoinColumn(name = "idImagen", nullable = false)
     private Imagen imagen;
 
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "descripcion")
+    private String descripcion;
+
 }

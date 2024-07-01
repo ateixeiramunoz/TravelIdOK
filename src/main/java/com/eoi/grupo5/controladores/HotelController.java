@@ -30,7 +30,7 @@ public class HotelController {
     public String detallesHotel(Model modelo, @PathVariable Integer id) {
          Optional<Hotel> hotel = servicio.encuentraPorId(id);
         modelo.addAttribute("hotel",hotel);
-        return "single_listing";
+        return "detallesHotel";
     }
 
 }

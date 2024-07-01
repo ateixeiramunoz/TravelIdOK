@@ -20,3 +20,15 @@ INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Nobu_Hotel.jpg', (
 INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 3'));
 INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Solo_soko.jpeg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 4'));
 
+-- Insertar datos en la tabla de companias
+INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 1', 'contacto1@compania.com');
+INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 2', 'contacto2@compania.com');
+INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 3', 'contacto3@compania.com');
+INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 4', 'contacto4@compania.com');
+
+-- Insertar datos en la tabla de vuelos
+INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 1', 'Descripción Vuelo 1','2024-07-01 08:30:00', '2024-07-01 12:00:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 1'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Hilton_Vienna_Plaza.jpg'), 150.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 1'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'));
+INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 2','Descripción Vuelo 2','2024-07-02 14:45:00', '2024-07-02 18:15:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 2'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Hotel_Artemide_2.jpg'), 200.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 3'));
+INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 3','Descripción Vuelo 3','2024-07-03 06:00:00', '2024-07-03 09:30:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 3'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Melia_Madrid_Princesa.jpg'), 180.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 3'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'));
+INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 4','Descripción Vuelo 4','2024-07-04 21:15:00', '2024-07-05 00:45:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 4'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Nobu_Hotel.jpg'), 220.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 3'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 1'));
+
