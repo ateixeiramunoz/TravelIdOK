@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Single Listing</title>
+    <title>Detalles Hotel</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Travelix Project" />
@@ -77,7 +77,7 @@
       <!-- Offers -->
 
       <div class="listing">
-        
+
         <!-- Single Listing -->
 
         <div class="container">
@@ -119,7 +119,6 @@
                   </div>
 
                   <!-- Listing Image -->
-
                   <div class="hotel_image" th:object="${hotel}">
                     <img th:src="@{${hotel.get().getImagenes().stream().findFirst().get().url}}" alt="Imagen del hotel" />
                     <div
@@ -238,77 +237,49 @@
                     </p>
                   </div>
 
-                <!-- Rooms -->
+                <!-- Hoteles Cercanos -->
+
+                <h2 class="text-dark mt-5">Hoteles en la misma zona</h2>
 
                 <div class="rooms">
                   <!-- Room -->
-                  <div class="room">
+                  <div class="room" th:each="hotelRecomendado : ${recomendados}">
                     <!-- Room -->
                     <div class="row">
                       <div class="col-lg-2">
                         <div class="room_image">
                           <img
-                            src="/images/room_1.jpg"
+                            th:src="@{${hotelRecomendado.getImagenes().stream().findFirst().get().getUrl()}}"
                             alt="https://unsplash.com/@grovemade"
                           />
                         </div>
                       </div>
                       <div class="col-lg-7">
                         <div class="room_content">
-                          <div class="room_title">Double or Twin Room</div>
-                          <div class="room_price">$99/night</div>
-                          <div class="room_text">
-                            FREE cancellation before 23:59 on 20 December 2017
+                          <div class="room_title" th:text="${hotelRecomendado.getNombre()}">Nombre Hotel</div>
+                          <div class="room_price" th:text="${hotelRecomendado.getPrecio() + ' €'}">Precio</div>
+                          <div class="room_text" th:text="${hotelRecomendado.getDescripcion()}">
+                            Descripción Hotel
                           </div>
-                          <div class="room_extra">Breakfast $7.50</div>
+                          <div class="rating_r hotel_rating pt-3" th:classappend=" 'rating_r_' + ${hotelRecomendado.getCategoria()}">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-3 text-lg-right">
                         <div class="room_button">
                           <div class="button book_button trans_200">
-                            <a href="#"
-                              >book<span></span><span></span><span></span
-                            ></a>
+                            <a th:href="@{'/hotel/' + ${hotelRecomendado.id}}">Ver</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Room -->
-                  <div class="room">
-                    <!-- Room -->
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <div class="room_image">
-                          <img
-                            src="/images/room_2.jpg"
-                            alt="https://unsplash.com/@oowgnuj"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-lg-7">
-                        <div class="room_content">
-                          <div class="room_title">Double or Twin Room</div>
-                          <div class="room_price">$99/night</div>
-                          <div class="room_text">
-                            FREE cancellation before 23:59 on 20 December 2017
-                          </div>
-                          <div class="room_extra">Breakfast $7.50</div>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 text-lg-right">
-                        <div class="room_button">
-                          <div class="button book_button trans_200">
-                            <a href="#"
-                              >book<span></span><span></span><span></span
-                            ></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 <!-- Reviews -->
 
@@ -388,6 +359,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
 
                 <!-- Location on Map -->
 
@@ -409,6 +381,8 @@
           </div>
         </div>
       </div>
+
+
 
       <!-- Footer -->
 
