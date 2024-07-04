@@ -28,19 +28,12 @@ public class HotelController {
 
     @GetMapping("/hotel/{id}")
     public String detallesHotel(Model modelo, @PathVariable Integer id) {
-         Optional<Hotel> hotel = servicio.encuentraPorId(id);
-        List<Hotel> listaHoteles = servicio.buscarEntidades();
+        Optional<Hotel> hotel = servicio.encuentraPorId(id);
         modelo.addAttribute("hotel",hotel);
-        modelo.addAttribute("recomendados", hotelesEnTuZona(listaHoteles, hotel));
+        modelo.addAttribute("recomendados", servicio.obtenerHotelesEnTuZona(hotel));
         return "detallesHotel";
     }
 
-    public List<Hotel> hotelesEnTuZona(List<Hotel> hoteles, Optional<Hotel> hotel) {
-        return hoteles
-                .stream()
-                .filter(h -> h.getLocalizacion().getNombre() == hotel.get().getLocalizacion().getNombre() && h.getId() != hotel.get().getId())
-                .limit(2)
-                .toList();
-    }
+
 
 }
