@@ -33,76 +33,61 @@
       <header th:replace="~{layout/plantilla :: header}"></header>
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
-      <!-- Home -->
 
-      <div class="home">
-        <div
-          class="home_background parallax-window"
-          data-parallax="scroll"
-          data-image-src="images/contact_background.jpg"
-        ></div>
-        <div class="home_content">
-          <div class="home_title">Registro</div>
-        </div>
-      </div>
+      <!-- Formulario -->
 
-      <!-- Contact -->
+      <section class="vh-100 custom-bg-section" style="background-image: url('/images/home_slider.jpg')">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+              <div class="card" style="border-radius: 1rem;">
+                <div class="row g-0">
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img src="/images/offer_4.jpg"
+                         alt="login form" class="img-fluid h-100" style="border-radius: 1rem 0 0 1rem;" />
+                  </div>
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body p-4 p-lg-5 text-black">
 
-      <div class="contact_form_section">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <!-- Contact Form -->
-              <div class="contact_form_container">
-                <div class="contact_title text-center">Regístrate</div>
-                <form
-                  action="#"
-                  id="contact_form"
-                  class="contact_form text-center"
-                >
-                  <input
-                    type="email"
-                    id="contact_form_email"
-                    class="contact_form_email input_field"
-                    placeholder="E-mail"
-                    required="required"
-                    data-error="Email is required."
-                  />
-                  <input
-                    type="password"
-                    id="contact_form_password"
-                    class="contact_form_password input_field"
-                    placeholder="Password"
-                    required="required"
-                    data-error="Password is required."
-                  />
-                  <input
-                    type="password"
-                    id="contact_form_repeat_password"
-                    class="contact_form_password input_field"
-                    placeholder="Repeat Password"
-                    required="required"
-                    data-error="Repeat Password is required."
-                  />
+                      <form>
 
-                  <button
-                    type="submit"
-                    id="form_submit_button"
-                    class="form_submit_button button trans_200"
-                  >
-                    Regístrate
-                  </button>
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                          <span class="h1 fw-bold mb-0">Registro</span>
+                        </div>
 
-                  <p class="text-white mt-5">
-                    ¿Ya estás registrado?
-                    <a href="login.html">Inicia Sesión en tu cuenta</a>
-                  </p>
-                </form>
+                        <h5 class="fw-normal mb-3 pb-3 d-none d-sm-block" style="letter-spacing: 1px;">Registra tu cuenta!</h5>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                          <label class="form-label" for="form2Example17">Correo Electrónico</label>
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                          <label class="form-label" for="form2Example27">Contraseña</label>
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                          <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block w-100" type="button">Regístrate!</button>
+                        </div>
+                        <div>
+                          <a class="small text-muted" href="#!">Olvidó su contraseña?</a>
+                          <p class="mb-0 mb-5-sm pb-lg-2" style="color: #393f81;">¿Ya tienes una cuenta?
+                            <a th:href="@{/inicio-sesion}" style="color: #393f81;">Inicia sesión</a>
+                          </p>
+                          <a href="#!" class="small text-muted">Terminos de uso.</a>
+                          <a href="#!" class="small text-muted">Política de privacidad</a>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Footer -->
 

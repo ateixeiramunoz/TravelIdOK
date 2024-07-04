@@ -1146,3 +1146,11 @@ section {
 .footer_nav_item a:hover {
   color: #ffffff;
 }
+/***************** Formulario de Inicio de Sesión **********************/
+.custom-bg-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+  padding-top: 100px;
+}
