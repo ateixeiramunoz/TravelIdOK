@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class ServicioHotel extends AbstractBusinessServiceSoloEnt<Hotel, Integer, RepoHotel>{
@@ -14,11 +15,11 @@ public class ServicioHotel extends AbstractBusinessServiceSoloEnt<Hotel, Integer
         super(repoHotel);
     }
 
-    public List<Hotel> obtenerHotelesEnTuZona(Hotel hotel) {
-        return super
-                .buscarEntidades()
+    public List<Hotel> obtenerHotelesEnTuZona(Optional<Hotel> hotel) {
+        return super.buscarEntidades()
                 .stream()
-                .filter(h -> h.getLocalizacion() == hotel.getLocalizacion() && !Objects.equals(h.getId(), hotel.getId())).limit(2)
+                .filter(h -> h.getLocalizacion().getNombre() == hotel.get().getLocalizacion().getNombre() && h.getId() != hotel.get().getId())
+                .limit(2)
                 .toList();
     }
 
