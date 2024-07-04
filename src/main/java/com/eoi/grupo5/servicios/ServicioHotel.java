@@ -18,7 +18,7 @@ public class ServicioHotel extends AbstractBusinessServiceSoloEnt<Hotel, Integer
     public List<Hotel> obtenerHotelesEnTuZona(Optional<Hotel> hotel) {
         return super.buscarEntidades()
                 .stream()
-                .filter(h -> h.getLocalizacion().getNombre() == hotel.get().getLocalizacion().getNombre() && h.getId() != hotel.get().getId())
+                .filter(h -> h.getLocalizacion().getNombre().equals(hotel.get().getLocalizacion().getNombre()) && h.getId() != hotel.get().getId())
                 .limit(2)
                 .toList();
     }
