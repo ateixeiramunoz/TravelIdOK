@@ -120,7 +120,7 @@
 
                   <!-- Listing Image -->
                   <div class="hotel_image" th:object="${hotel}">
-                    <img th:src="@{${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del hotel" />
+                    <img th:src="@{${imagenHotel}}" alt="Imagen del hotel" />
                     <div
                       class="hotel_review_container d-flex flex-column align-items-center justify-content-center"
                     >
@@ -143,10 +143,10 @@
                         <div class="owl-item" th:each="imagen : ${hotel.imagenesHotel}">
                           <a
                             class="colorbox cboxElement"
-                            th:href="@{${imagen.getUrl()}}"
+                            th:href="@{${imagen.url}}"
                           >
                             <img
-                              th:src="${imagen.getUrl()}"
+                              th:src="${imagen.url}"
                               alt="https://unsplash.com/@jbriscoe"
                             />
                           </a>
@@ -232,7 +232,7 @@
                   <!-- Hotel Info Text -->
 
                   <div class="hotel_info_text">
-                    <p th:text="${hotel.getDescripcion()}">
+                    <p th:text="${hotel.descripcion}">
                       Descripción del Hotel
                     </p>
                   </div>
@@ -296,12 +296,12 @@
                       </div>
                       <div class="col-lg-7">
                         <div class="room_content">
-                          <div class="room_title" th:text="${hotelRecomendado.getNombre()}">Nombre Hotel</div>
-                          <div class="room_price" th:text="${hotelRecomendado.getPrecio() + ' €'}">Precio</div>
-                          <div class="room_text" th:text="${hotelRecomendado.getDescripcion()}">
+                          <div class="room_title" th:text="${hotelRecomendado.nombre}">Nombre Hotel</div>
+                          <div class="room_price" th:text="${hotelRecomendado.precio + ' €'}">Precio</div>
+                          <div class="room_text" th:text="${hotelRecomendado.descripcion}">
                             Descripción Hotel
                           </div>
-                          <div class="rating_r hotel_rating pt-3" th:classappend=" 'rating_r_' + ${hotelRecomendado.getCategoria()}">
+                          <div class="rating_r hotel_rating pt-3" th:classappend=" 'rating_r_' + ${hotelRecomendado.categoria}">
                             <i></i>
                             <i></i>
                             <i></i>
@@ -319,8 +319,6 @@
                       </div>
                     </div>
                   </div>
-
-
 
                 <!-- Reviews -->
 
