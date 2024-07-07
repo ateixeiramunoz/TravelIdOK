@@ -70,7 +70,7 @@
           data-image-src="/images/single_background.jpg"
         ></div>
         <div class="home_content">
-          <div class="home_title" th:text="${hotel.get().getNombre()}">Oferta</div>
+          <div class="home_title" th:text="${hotel.getNombre()}">Oferta</div>
         </div>
       </div>
 
@@ -92,8 +92,8 @@
                     class="hotel_title_container d-flex flex-lg-row flex-column gap-lg-5"
                   >
                     <div class="hotel_title_content">
-                      <h1 class="hotel_title" th:text="${hotel.get().getNombre()}">Nombre Hotel</h1>
-                      <div class="rating_r hotel_rating" th:classappend=" 'rating_r_' + ${hotel.get().getCategoria()}">
+                      <h1 class="hotel_title" th:text="${hotel.getNombre()}">Nombre Hotel</h1>
+                      <div class="rating_r hotel_rating" th:classappend=" 'rating_r_' + ${hotel.getCategoria()}">
                         <i></i>
                         <i></i>
                         <i></i>
@@ -101,8 +101,8 @@
                         <i></i>
                       </div>
                       <div class="hotel_location"
-                           th:text="${hotel.get().getLocalizacion().getNombre()} + ', '
-                           + ${hotel.get().getLocalizacion().getPais().getNombre()}">
+                           th:text="${hotel.getLocalizacion().getNombre()} + ', '
+                           + ${hotel.getLocalizacion().getPais().getNombre()}">
                         Localización del Hotel
                       </div>
                     </div>
@@ -120,7 +120,7 @@
 
                   <!-- Listing Image -->
                   <div class="hotel_image" th:object="${hotel}">
-                    <img th:src="@{${hotel.get().getImagenes().stream().findFirst().get().url}}" alt="Imagen del hotel" />
+                    <img th:src="@{${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del hotel" />
                     <div
                       class="hotel_review_container d-flex flex-column align-items-center justify-content-center"
                     >
@@ -140,7 +140,7 @@
                     <div class="hotel_slider_container">
                       <div class="owl-carousel owl-theme hotel_slider">
                         <!-- Hotel Gallery Slider Item -->
-                        <div class="owl-item" th:each="imagen : ${hotel.get().getImagenes()}">
+                        <div class="owl-item" th:each="imagen : ${hotel.imagenesHotel}">
                           <a
                             class="colorbox cboxElement"
                             th:href="@{${imagen.getUrl()}}"
@@ -232,24 +232,64 @@
                   <!-- Hotel Info Text -->
 
                   <div class="hotel_info_text">
-                    <p th:text="${hotel.get().getDescripcion()}">
+                    <p th:text="${hotel.getDescripcion()}">
                       Descripción del Hotel
                     </p>
                   </div>
 
-                <!-- Hoteles Cercanos -->
+                  <h2 class="text-dark">Habitaciones</h2>
 
-                <h2 class="text-dark mt-5">Hoteles en la misma zona</h2>
-
-                <div class="rooms">
-                  <!-- Room -->
-                  <div class="room" th:each="hotelRecomendado : ${recomendados}">
+                <!-- Habitaciones -->
+                  <div th:if="${hotel.habitaciones.isEmpty()}">
+                    <h4>No hay habitaciones disponibles</h4>
+                  </div>
+                  <div class="room" th:each="habitacion : ${hotel.habitaciones}" th:if="${!hotel.habitaciones.isEmpty()}">
                     <!-- Room -->
                     <div class="row">
                       <div class="col-lg-2">
                         <div class="room_image">
                           <img
-                            th:src="@{${hotelRecomendado.getImagenes().stream().findFirst().get().getUrl()}}"
+                                  th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : ${hotel.imagenesHotel.stream().findFirst().get().url}}"
+                                  alt="https://unsplash.com/@grovemade"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <div class="room_content">
+                          <div class="room_title" th:text="${habitacion.tipo.nombre}">Nombre Habitación</div>
+                          <div class="room_price" th:text="${habitacion.precio + ' €'}">Precio</div>
+                          <div class="room_text" th:text="${habitacion.tipo.descripcion}">
+                            Descripción Habitación
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 text-lg-right">
+                        <div class="room_button">
+                          <div class="button book_button trans_200">
+                            <a th:href="@{'/hotel/' + ${habitacion.id}}">Ver</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Hoteles Cercanos -->
+
+                <h2 class="text-dark mt-5">Hoteles en la misma zona</h2>
+
+                <div class="rooms">
+                  <div th:if="${recomendados.isEmpty()}">
+                    <h4>
+                      No hay hoteles cerca de tu zona
+                    </h4>
+                  </div>
+                  <!-- Room -->
+                  <div class="room" th:each="hotelRecomendado : ${recomendados}" th:if="${!recomendados.isEmpty()}">
+                    <!-- Room -->
+                    <div class="row">
+                      <div class="col-lg-2">
+                        <div class="room_image">
+                          <img
+                            th:src="@{${hotelRecomendado.imagenesHotel.stream().findFirst().get().url}}"
                             alt="https://unsplash.com/@grovemade"
                           />
                         </div>
@@ -279,6 +319,7 @@
                       </div>
                     </div>
                   </div>
+
 
 
                 <!-- Reviews -->

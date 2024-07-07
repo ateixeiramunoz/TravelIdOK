@@ -15,10 +15,10 @@ public class ServicioHotel extends AbstractBusinessServiceSoloEnt<Hotel, Integer
         super(repoHotel);
     }
 
-    public List<Hotel> obtenerHotelesEnTuZona(Optional<Hotel> hotel) {
+    public List<Hotel> obtenerHotelesEnTuZona(Hotel hotel) {
         return super.buscarEntidades()
                 .stream()
-                .filter(h -> h.getLocalizacion().getNombre().equals(hotel.get().getLocalizacion().getNombre()) && h.getId() != hotel.get().getId())
+                .filter(h -> h.getLocalizacion().getNombre().equals(hotel.getLocalizacion().getNombre()) && !Objects.equals(h.getId(), hotel.getId()))
                 .limit(2)
                 .toList();
     }

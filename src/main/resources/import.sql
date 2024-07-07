@@ -25,7 +25,6 @@ INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princ
 INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 5'));
 INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 6'));
 
-
 -- Insertar datos en la tabla de companias
 INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 1', 'contacto1@compania.com');
 INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 2', 'contacto2@compania.com');
@@ -36,4 +35,35 @@ INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 4', 'contacto4@
 INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 1', 'Descripción Vuelo 1','2024-07-01 08:30:00', '2024-07-01 12:00:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 1'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Hilton_Vienna_Plaza.jpg'), 150.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 1'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'));
 INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 2','Descripción Vuelo 2','2024-07-02 14:45:00', '2024-07-02 18:15:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 2'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Hotel_Artemide_2.jpg'), 200.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 3'));
 INSERT INTO vuelos (nombre, descripcion, fecha_salida, fecha_llegada, id_compania, id_imagen, precio, id_origen, id_destino) VALUES ('Vuelo 3','Descripción Vuelo 3','2024-07-04 21:15:00', '2024-07-05 00:45:00', (SELECT id FROM companias_vuelo WHERE nombre = 'Compania 4'), (SELECT id FROM imagenes WHERE url = '/images/Hoteles/Nobu_Hotel.jpg'), 220.00, (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 3'), (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 1'));
+
+-- Inserta los tipos de habitación en la base de datos
+INSERT INTO tipo_habitacion (nombre, descripcion) VALUES ('Individual', 'Habitación con una cama individual');
+INSERT INTO tipo_habitacion (nombre, descripcion) VALUES ('Doble', 'Habitación con una cama doble o dos camas individuales');
+INSERT INTO tipo_habitacion (nombre, descripcion) VALUES ('Suite', 'Habitación con sala de estar y dormitorio separado');
+INSERT INTO tipo_habitacion (nombre, descripcion) VALUES ('Familiar', 'Habitación con varias camas, ideal para familias');
+INSERT INTO tipo_habitacion (nombre, descripcion) VALUES ('Deluxe', 'Habitación de lujo con comodidades adicionales');
+
+-- Inserta las habitaciones en la base de datos
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (101, 2, 1, 1, 1);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (102, 4, 2, 2, 1);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (103, 2, 1, 3, 1);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (104, 3, 1, 1, 1);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (105, 4, 2, 2, 3);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (106, 2, 1, 3, 2);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (107, 3, 1, 1, 2);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (108, 4, 2, 2, 2);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (109, 2, 1, 3, 2);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (110, 3, 1, 1, 2);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (111, 2, 1, 1, 5);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (112, 4, 2, 2, 6);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (113, 2, 1, 3, 4);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (114, 3, 1, 1, 3);
+INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (115, 4, 2, 2, 3);
+
+INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 6);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 7);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 8);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 9);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 10);
+
 

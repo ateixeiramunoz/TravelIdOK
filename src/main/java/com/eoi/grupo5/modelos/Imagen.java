@@ -28,6 +28,10 @@ public class Imagen {
     @JoinColumn(name = "idActividad")
     private Actividad actividad;
 
+    @ManyToOne
+    @JoinColumn(name = "idHabitacion")
+    private Habitacion habitacionImagen;
+
     @OneToOne(mappedBy = "imagen")
     private Vuelo vuelo;
 }

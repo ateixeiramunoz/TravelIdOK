@@ -29,9 +29,16 @@ public class HotelController {
     @GetMapping("/hotel/{id}")
     public String detallesHotel(Model modelo, @PathVariable Integer id) {
         Optional<Hotel> hotel = servicio.encuentraPorId(id);
-        modelo.addAttribute("hotel",hotel);
-        modelo.addAttribute("recomendados", servicio.obtenerHotelesEnTuZona(hotel));
+        // Si no encontramos el hotel no hemos encontrado el hotel
+        if(hotel.isPresent()) {
+        modelo.addAttribute("recomendados", servicio.obtenerHotelesEnTuZona(hotel.get()));
+        modelo.addAttribute("hotel",hotel.get());
         return "detallesHotel";
+        } else {
+            // Hotel no encontrado - htlm
+            return "detallesHotel";
+        }
+
     }
 
 

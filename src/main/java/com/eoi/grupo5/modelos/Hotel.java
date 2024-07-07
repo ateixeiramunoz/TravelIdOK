@@ -44,6 +44,6 @@ public class Hotel {
     private Localizacion localizacion;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Imagen> imagenes = new HashSet<>();
+    private Set<Imagen> imagenesHotel = new HashSet<>();
 
 }

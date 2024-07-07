@@ -24,9 +24,6 @@ public class TipoHabitacion {
     @Column(name = "nombre", length = 45, nullable = false)
     private String nombre;
 
-    @Column(name = "precioNoche")
-    private Double precioNoche;
-
     @Column(name = "descripcion", length = 150)
     private String descripcion;
 
