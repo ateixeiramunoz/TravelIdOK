@@ -138,5 +138,4 @@ public abstract class AbstractBusinessServiceSoloEnt<E, ID, REPO extends JpaRepo
     public REPO getRepo() {
         return repo;
     }
-
 }
