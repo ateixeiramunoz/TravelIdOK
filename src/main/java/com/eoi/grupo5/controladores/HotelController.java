@@ -1,6 +1,7 @@
 package com.eoi.grupo5.controladores;
 
 import com.eoi.grupo5.modelos.Hotel;
+import com.eoi.grupo5.modelos.Imagen;
 import com.eoi.grupo5.servicios.ServicioHotel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +32,11 @@ public class HotelController {
         Optional<Hotel> hotel = servicio.encuentraPorId(id);
         // Si no encontramos el hotel no hemos encontrado el hotel
         if(hotel.isPresent()) {
-        modelo.addAttribute("recomendados", servicio.obtenerHotelesEnTuZona(hotel.get()));
-        modelo.addAttribute("hotel",hotel.get());
+            String hotelImagen = hotel.get().getImagenesHotel().stream().findFirst().get().getUrl();
+            modelo.addAttribute("recomendados", servicio.obtenerHotelesEnTuZona(hotel.get()));
+            modelo.addAttribute("hotel",hotel.get());
+            modelo.addAttribute("imagenHotel", hotelImagen);
+
         return "detallesHotel";
         } else {
             // Hotel no encontrado - htlm
@@ -40,7 +44,5 @@ public class HotelController {
         }
 
     }
-
-
 
 }

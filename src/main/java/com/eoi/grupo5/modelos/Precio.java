@@ -22,7 +22,7 @@ public class Precio {
 
     private Double precio;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "idHabitacion", nullable = false)
     private Habitacion habitacion;
 
