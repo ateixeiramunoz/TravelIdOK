@@ -1,6 +1,7 @@
 package com.eoi.grupo5.servicios;
 
 import com.eoi.grupo5.modelos.Habitacion;
+import com.eoi.grupo5.modelos.Hotel;
 import com.eoi.grupo5.modelos.Precio;
 import com.eoi.grupo5.repos.RepoHabitacion;
 import com.eoi.grupo5.repos.RepoPrecio;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ServicioHabitacion extends AbstractBusinessServiceSoloEnt<Habitacion, Integer, RepoHabitacion>{
@@ -23,6 +26,23 @@ public class ServicioHabitacion extends AbstractBusinessServiceSoloEnt<Habitacio
                 .filter(precio -> !fechaActual.isBefore(precio.getFechaInicio()) && (precio.getFechaFin() == null || !fechaActual.isAfter(precio.getFechaFin())))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Map<Integer, Double> obtenerPreciosActualesHabitacionesHotel(Hotel hotel) {
+        // Obtener los precios actuales de las habitaciones del hotel
+        LocalDateTime fechaActual = LocalDateTime.now();
+        Map<Integer, Double> preciosActuales = new HashMap<>();
+
+        hotel.getHabitaciones().forEach(habitacion -> {
+            Precio precioActual = getPrecioActual(habitacion, fechaActual);
+            if (precioActual != null) {
+                preciosActuales.put(habitacion.getId(), precioActual.getPrecio());
+            } else {
+                preciosActuales.put(habitacion.getId(), null);
+            }
+        });
+
+        return preciosActuales;
     }
 
     public Double calcularPrecioTotal(Habitacion habitacion, LocalDateTime fechaInicio, LocalDateTime fechaFin) {

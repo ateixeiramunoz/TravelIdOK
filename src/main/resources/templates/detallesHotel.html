@@ -57,12 +57,10 @@
   <body>
     <div class="super_container">
       <!-- Header -->
-
       <header th:replace="~{layout/plantilla :: header}"></header>
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
       <!-- Home -->
-
       <div class="home">
         <div
           class="home_background parallax-window"
@@ -135,7 +133,6 @@
                   </div>
 
                   <!-- Hotel Gallery -->
-
                   <div class="hotel_gallery">
                     <div class="hotel_slider_container">
                       <div class="owl-carousel owl-theme hotel_slider">
@@ -230,7 +227,6 @@
                   </div>
 
                   <!-- Hotel Info Text -->
-
                   <div class="hotel_info_text">
                     <p th:text="${hotel.descripcion}">
                       Descripción del Hotel
@@ -257,7 +253,7 @@
                       <div class="col-lg-7">
                         <div class="room_content">
                           <div class="room_title" th:text="${habitacion.tipo.nombre}">Nombre Habitación</div>
-                          <div class="room_price"th:text="${preciosActuales[habitacion.id] != null ? preciosActuales[habitacion.id] + ' €' : 'No disponible'}">Precio</div>
+                          <div class="room_price" th:text="${preciosActuales[habitacion.id] != null ? preciosActuales[habitacion.id] + ' €' : 'No disponible'}">Precio</div>
                           <div class="room_text" th:text="${habitacion.tipo.descripcion}">
                             Descripción Habitación
                           </div>
@@ -272,8 +268,8 @@
                       </div>
                     </div>
                   </div>
-                <!-- Hoteles Cercanos -->
 
+                <!-- Hoteles Cercanos -->
                 <h2 class="text-dark mt-5">Hoteles en la misma zona</h2>
 
                 <div class="rooms">
@@ -320,7 +316,6 @@
                   </div>
 
                 <!-- Reviews -->
-
                 <div class="reviews">
                   <div class="reviews_title">reviews</div>
                   <div class="reviews_container">
@@ -400,12 +395,10 @@
               </div>
 
                 <!-- Location on Map -->
-
                 <div class="location_on_map">
                   <div class="location_on_map_title">location on map</div>
 
                   <!-- Google Map -->
-
                   <div class="travelix_map">
                     <div id="google_map" class="google_map">
                       <div class="map_container">
@@ -421,9 +414,7 @@
       </div>
 
 
-
       <!-- Footer -->
-
       <footer th:replace="~{layout/plantilla :: footer}"></footer>
 
       <!-- Copyright -->

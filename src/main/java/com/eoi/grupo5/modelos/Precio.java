@@ -20,8 +20,16 @@ public class Precio {
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "idHabitacion", nullable = false)
+    @JoinColumn(name = "idHabitacion")
     private Habitacion habitacion;
+
+    @ManyToOne
+    @JoinColumn(name = "idAsiento")
+    private Asiento asiento;
+
+    @ManyToOne
+    @JoinColumn(name = "idActividad")
+    private Actividad actividad;
 
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;

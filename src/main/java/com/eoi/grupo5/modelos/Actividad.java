@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -47,6 +48,9 @@ public class Actividad {
 
     @OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Imagen> imagenes = new HashSet<>();
+
+    @OneToMany(mappedBy = "actividad")
+    private List<Precio> precio;
 
 
 }

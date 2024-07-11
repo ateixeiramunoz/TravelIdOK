@@ -45,21 +45,8 @@ public class HotelController {
             modelo.addAttribute("recomendados", servicioHotel.obtenerHotelesEnTuZona(hotel.get()));
             modelo.addAttribute("hotel",hotel.get());
             modelo.addAttribute("imagenHotel", hotelImagen);
-
-            // Obtener los precios actuales de las habitaciones del hotel
-            LocalDateTime fechaActual = LocalDateTime.now();
-            Map<Integer, Double> preciosActuales = new HashMap<>();
-
-            hotel.get().getHabitaciones().forEach(habitacion -> {
-                Precio precioActual = servicioHabitacion.getPrecioActual(habitacion, fechaActual);
-                if (precioActual != null) {
-                    preciosActuales.put(habitacion.getId(), precioActual.getPrecio());
-                } else {
-                    preciosActuales.put(habitacion.getId(), null);
-                }
-            });
-
-            modelo.addAttribute("preciosActuales", preciosActuales);
+            modelo.addAttribute("preciosActuales",
+                    servicioHabitacion.obtenerPreciosActualesHabitacionesHotel(hotel.get()));
 
         return "detallesHotel";
         } else {
