@@ -183,17 +183,16 @@
 
                   <div class="single-package-item-txt">
                     <h3 class="d-block d-sm-none d-xl-block">
-                      <span th:text="${hotel.nombre}"></span> <span class="pull-right" th:text="${hotel.precio} + ' €'"></span>
+                      <span th:text="${hotel.nombre}"></span> <span class="pull-right"></span>
                     </h3>
                     <div class="d-none d-sm-block d-xl-none">
                       <h3 th:text="${hotel.nombre}">Hotel Nombre</h3>
-                      <h4 class="text-dark" th:text="'€ ' + ${hotel.precio}">120€</h4>
                     </div>
                     <div class="packages-para">
                       <p>
                         <span class="d-inline-block">
                             <i class="fa fa-angle-right"></i>
-                            <span class="d-inline-block" th:text="${hotel.getLocalizacion().getNombre()}"> Berlín, Alemania</span>
+                            <span class="d-inline-block" th:text="${hotel.localizacion.nombre}"> Berlín, Alemania</span>
                         </span>
                       </p>
                       <p>
@@ -207,7 +206,7 @@
 
                     <div class="packages-review">
                       <p>
-                        <i class="fa fa-star" th:each="i : ${#numbers.sequence(1, hotel.getCategoria(), 1)}"></i>
+                        <i class="fa fa-star" th:each="i : ${#numbers.sequence(1, hotel.categoria, 1)}"></i>
                       </p>
                     </div>
                     <div class="about-btn">

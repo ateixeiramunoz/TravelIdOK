@@ -1,10 +1,7 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -16,15 +13,23 @@ import java.time.LocalDateTime;
 public class Precio {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "idHabitacion", nullable = false)
+    @JoinColumn(name = "idHabitacion")
     private Habitacion habitacion;
+
+    @ManyToOne
+    @JoinColumn(name = "idAsiento")
+    private Asiento asiento;
+
+    @ManyToOne
+    @JoinColumn(name = "idActividad")
+    private Actividad actividad;
 
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;

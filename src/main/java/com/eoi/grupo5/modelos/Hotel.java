@@ -33,9 +33,6 @@ public class Hotel {
     @Column(name = "contacto", length = 45)
     private String contacto;
 
-    @Column(name = "precio")
-    private Double precio;
-
     @OneToMany(mappedBy = "hotel")
     private Set<Habitacion> habitaciones = new HashSet<>();
 
