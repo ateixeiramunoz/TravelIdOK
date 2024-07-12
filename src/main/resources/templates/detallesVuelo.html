@@ -70,7 +70,7 @@
           data-image-src="/images/single_background.jpg"
         ></div>
         <div class="home_content">
-          <div class="home_title" th:text="${vuelo.get().getNombre()}">Oferta</div>
+          <div class="home_title" th:text="${vuelo.nombre}">Oferta</div>
         </div>
       </div>
 
@@ -92,10 +92,10 @@
                     class="hotel_title_container d-flex flex-lg-row flex-column gap-lg-5"
                   >
                     <div class="hotel_title_content">
-                      <h1 class="hotel_title" th:text="${vuelo.get().getNombre()}">Nombre vuelo</h1>
+                      <h1 class="hotel_title" th:text="${vuelo.nombre}">Nombre vuelo</h1>
                       <div class="hotel_location"
-                           th:text="'Origen: ' + ${vuelo.get().origen.getNombre()} + ', '
-                           + ' Destino: ' +  ${vuelo.get().destino.getNombre()}">
+                           th:text="'Origen: ' + ${vuelo.origen.nombre} + ', '
+                           + ' Destino: ' +  ${vuelo.destino.nombre}">
                         Origen y Destino del Vuelo
                       </div>
                     </div>
@@ -114,12 +114,12 @@
                   <!-- Image -->
 
                   <div class="hotel_image" th:object="${vuelo}">
-                    <img th:src="@{${vuelo.get().imagen.getUrl()}}" alt="Imagen del vuelo" />
+                    <img th:src="@{${imagenVuelo}}" alt="Imagen del vuelo" />
                   </div>
 
                   <!-- vuelo Info Text -->
                   <div class="hotel_info_text">
-                    <p th:text="${vuelo.get().getDescripcion()}">
+                    <p th:text="${vuelo.descripcion}">
                       Descripción del vuelo
                     </p>
                   </div>

@@ -57,12 +57,10 @@
   <body>
     <div class="super_container">
       <!-- Header -->
-
       <header th:replace="~{layout/plantilla :: header}"></header>
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
       <!-- Home -->
-
       <div class="home">
         <div
           class="home_background parallax-window"
@@ -120,7 +118,7 @@
 
                   <!-- Listing Image -->
                   <div class="hotel_image" th:object="${hotel}">
-                    <img th:src="@{${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del hotel" />
+                    <img th:src="@{${imagenHotel}}" alt="Imagen del hotel" />
                     <div
                       class="hotel_review_container d-flex flex-column align-items-center justify-content-center"
                     >
@@ -135,7 +133,6 @@
                   </div>
 
                   <!-- Hotel Gallery -->
-
                   <div class="hotel_gallery">
                     <div class="hotel_slider_container">
                       <div class="owl-carousel owl-theme hotel_slider">
@@ -143,10 +140,10 @@
                         <div class="owl-item" th:each="imagen : ${hotel.imagenesHotel}">
                           <a
                             class="colorbox cboxElement"
-                            th:href="@{${imagen.getUrl()}}"
+                            th:href="@{${imagen.url}}"
                           >
                             <img
-                              th:src="${imagen.getUrl()}"
+                              th:src="${imagen.url}"
                               alt="https://unsplash.com/@jbriscoe"
                             />
                           </a>
@@ -230,9 +227,8 @@
                   </div>
 
                   <!-- Hotel Info Text -->
-
                   <div class="hotel_info_text">
-                    <p th:text="${hotel.getDescripcion()}">
+                    <p th:text="${hotel.descripcion}">
                       Descripción del Hotel
                     </p>
                   </div>
@@ -257,7 +253,7 @@
                       <div class="col-lg-7">
                         <div class="room_content">
                           <div class="room_title" th:text="${habitacion.tipo.nombre}">Nombre Habitación</div>
-                          <div class="room_price" th:text="${habitacion.precio + ' €'}">Precio</div>
+                          <div class="room_price" th:text="${preciosActuales[habitacion.id] != null ? preciosActuales[habitacion.id] + ' €' : 'No disponible'}">Precio</div>
                           <div class="room_text" th:text="${habitacion.tipo.descripcion}">
                             Descripción Habitación
                           </div>
@@ -266,14 +262,14 @@
                       <div class="col-lg-3 text-lg-right">
                         <div class="room_button">
                           <div class="button book_button trans_200">
-                            <a th:href="@{'/hotel/' + ${habitacion.id}}">Ver</a>
+                            <a th:href="@{'/habitacion/' + ${habitacion.id}}">Ver</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                <!-- Hoteles Cercanos -->
 
+                <!-- Hoteles Cercanos -->
                 <h2 class="text-dark mt-5">Hoteles en la misma zona</h2>
 
                 <div class="rooms">
@@ -296,12 +292,11 @@
                       </div>
                       <div class="col-lg-7">
                         <div class="room_content">
-                          <div class="room_title" th:text="${hotelRecomendado.getNombre()}">Nombre Hotel</div>
-                          <div class="room_price" th:text="${hotelRecomendado.getPrecio() + ' €'}">Precio</div>
-                          <div class="room_text" th:text="${hotelRecomendado.getDescripcion()}">
+                          <div class="room_title" th:text="${hotelRecomendado.nombre}">Nombre Hotel</div>
+                          <div class="room_text" th:text="${hotelRecomendado.descripcion}">
                             Descripción Hotel
                           </div>
-                          <div class="rating_r hotel_rating pt-3" th:classappend=" 'rating_r_' + ${hotelRecomendado.getCategoria()}">
+                          <div class="rating_r hotel_rating pt-3" th:classappend=" 'rating_r_' + ${hotelRecomendado.categoria}">
                             <i></i>
                             <i></i>
                             <i></i>
@@ -320,10 +315,7 @@
                     </div>
                   </div>
 
-
-
                 <!-- Reviews -->
-
                 <div class="reviews">
                   <div class="reviews_title">reviews</div>
                   <div class="reviews_container">
@@ -403,12 +395,10 @@
               </div>
 
                 <!-- Location on Map -->
-
                 <div class="location_on_map">
                   <div class="location_on_map_title">location on map</div>
 
                   <!-- Google Map -->
-
                   <div class="travelix_map">
                     <div id="google_map" class="google_map">
                       <div class="map_container">
@@ -424,9 +414,7 @@
       </div>
 
 
-
       <!-- Footer -->
-
       <footer th:replace="~{layout/plantilla :: footer}"></footer>
 
       <!-- Copyright -->

@@ -29,9 +29,6 @@ public class Vuelo {
     @Column(name = "fechaLlegada")
     private LocalDateTime fechaLlegada;
 
-    @Column(name = "precio")
-    private Double precio;
-
     @ManyToOne
     @JoinColumn(name = "idCompania", foreignKey = @ForeignKey(name = "fkVuelosCompanias"), nullable = false)
     private CompaniaVuelo compania;

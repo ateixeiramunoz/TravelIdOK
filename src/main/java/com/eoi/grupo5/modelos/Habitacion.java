@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,7 +45,7 @@ public class Habitacion {
     @OneToMany(mappedBy = "habitacionImagen",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Imagen> imagenesHabitacion = new HashSet<>();
 
-    @OneToOne(mappedBy = "habitacion")
-    private Precio precio;
+    @OneToMany(mappedBy = "habitacion")
+    private List<Precio> precio;
 
 }

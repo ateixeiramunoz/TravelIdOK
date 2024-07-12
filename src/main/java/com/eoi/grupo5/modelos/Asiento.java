@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,9 +22,6 @@ public class Asiento {
     @Column(name = "numero", length = 5)
     private String numero;
 
-    @Column(name = "precio")
-    private Double precio;
-
     @ManyToOne
     @JoinColumn(name = "idCategoria", foreignKey = @ForeignKey(name = "fkAsiCat"), nullable = false)
     private CategoriaAsiento categoria;
@@ -34,5 +32,8 @@ public class Asiento {
     @ManyToOne
     @JoinColumn(name = "idVuelo", foreignKey = @ForeignKey(name = "fkAsiVuelos"), nullable = false)
     private Vuelo vuelo;
+
+    @OneToMany(mappedBy = "asiento")
+    private List<Precio> precio;
 
 }
