@@ -40,7 +40,7 @@ public class HotelController {
         return "detallesHotel";
         } else {
             // Hotel no encontrado - htlm
-            return "paginaError";
+            return "hotelNoEncontrado";
         }
 
     }
