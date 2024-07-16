@@ -1,6 +1,6 @@
 # traveid
 
-Aplicacion web de viajes por Miguel, Juanmi y Andy 
+Aplicación web de gestión de viajes por Miguel, Juanmi y Andy 
 
 
 # INSTALACIÓN
