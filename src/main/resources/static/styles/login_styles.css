@@ -145,7 +145,7 @@ h5::selection,
 h6::selection {
 }
 .form-control {
-  color: #db5246;
+
 }
 section {
   display: block;
@@ -1151,6 +1151,6 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  height: 100vh; /* Ajusta la altura según tus necesidades */
   padding-top: 100px;
 }
+

@@ -22,16 +22,16 @@ public class Usuario implements UserDetails, Serializable {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "nombreUsuario", length = 45)
+    @Column(name = "nombreUsuario", nullable = false, length = 45)
     private String nombreUsuario;
 
-    @Column(name = "password", length = 45)
+    @Column(name = "password", nullable = false, length = 150)
     private String password;
 
     @OneToOne(mappedBy = "usu",cascade = CascadeType.ALL)
     private DetallesUsuario detalles;
 
-    @OneToMany(mappedBy = "usu")
+    @OneToMany(mappedBy = "usu", fetch = FetchType.EAGER)
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -40,7 +40,7 @@ public class Usuario implements UserDetails, Serializable {
             joinColumns = @JoinColumn(name = "usuarioId"),
             inverseJoinColumns = @JoinColumn(name = "rolId")
     )
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @Basic(optional = false)
     private boolean active = true;
@@ -58,5 +58,11 @@ public class Usuario implements UserDetails, Serializable {
     @Override
     public String getUsername() {
         return nombreUsuario;
+    }
+
+    public Usuario(String nombreUsuario, String password, DetallesUsuario detalles) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.detalles = detalles;
     }
 }
