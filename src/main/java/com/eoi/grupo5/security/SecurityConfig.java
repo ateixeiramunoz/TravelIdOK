@@ -45,6 +45,7 @@ public class SecurityConfig {
                 .requestMatchers("/styles/**").permitAll()
                 .requestMatchers("/fonts/**").permitAll()
                 .requestMatchers("/").permitAll()
+                .requestMatchers("/register").permitAll()
                 .requestMatchers("/vuelos/**").permitAll()
                 .requestMatchers("/hoteles/**").permitAll()
                 .requestMatchers("/actividades/**").permitAll()
