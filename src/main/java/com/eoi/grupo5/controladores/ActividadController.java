@@ -4,7 +4,7 @@ import com.eoi.grupo5.controladores.criteria.BusquedaCriteriaActividades;
 import com.eoi.grupo5.mapper.ActividadesMapper;
 import com.eoi.grupo5.modelos.Actividad;
 import com.eoi.grupo5.modelos.Precio;
-import com.eoi.grupo5.modelos.TipoActividad;
+
 import com.eoi.grupo5.modelos.filtros.ActividadDto;
 import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
 import com.eoi.grupo5.servicios.ServicioActividad;

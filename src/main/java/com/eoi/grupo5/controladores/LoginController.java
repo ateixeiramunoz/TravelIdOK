@@ -39,4 +39,10 @@ public class LoginController {
         }
         return "redirect:/login?error=true";
     }
+
+    @GetMapping("/registro")
+    public String registroUsuario(Model modelo) {
+        return "register";
+    }
+
 }
