@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,9 +26,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        //http.httpBasic(Customizer.withDefaults());
+
         http.formLogin(form -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/", true)
                 .permitAll()
         );
         //cierre de sesión
@@ -51,7 +55,10 @@ public class SecurityConfig {
                 .requestMatchers("/actividades/**").permitAll()
                 .requestMatchers("/filtrar-actividades").permitAll()
                 .requestMatchers("/conocenos/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/login/").permitAll()
                 .anyRequest().authenticated();
+
+        http.csrf().disable();
 
         return http.build();
     }
