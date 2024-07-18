@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,5 +25,8 @@ public class Role implements Serializable {
 
     @Column(nullable = false)
     private String roleName;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<Usuario> usuarios = new HashSet<>();
 
 }
