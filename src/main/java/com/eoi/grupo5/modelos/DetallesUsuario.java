@@ -18,7 +18,7 @@ public class DetallesUsuario {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "email", length = 50)
+    @Column(name = "email", nullable = false, length = 50)
     private String email;
 
     @Column(name = "dni", length = 10)
@@ -30,7 +30,7 @@ public class DetallesUsuario {
     @Column(name = "telefono", length = 15)
     private String telefono;
 
-    @Column(name="nombre", nullable = false, length = 45)
+    @Column(name="nombre", length = 45)
     private String nombre;
 
     @Column(name="apellidos", length = 45)
@@ -38,7 +38,11 @@ public class DetallesUsuario {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idUsuario")
     private Usuario usu;
 
+    // Constructores
+    public DetallesUsuario(String email) {
+        this.email = email;
+    }
 }
