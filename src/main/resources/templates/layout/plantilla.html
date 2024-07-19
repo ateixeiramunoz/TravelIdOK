@@ -51,6 +51,10 @@
                             </li>
 
                             <li class="main_nav_item" sec:authorize="isAuthenticated()">
+                                <a th:href="@{/}">Tus Reservas</a>
+                            </li>
+
+                            <li class="main_nav_item" sec:authorize="isAuthenticated()">
                                 <a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
                                 <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
                                     <input hidden type="submit" value="Cerrar Sesión"/>
@@ -87,7 +91,20 @@
                 <a th:href="@{/actividades/lista}">Actividades</a>
             </li>
             <li class="menu_item"><a th:href="@{/conocenos}">Conócenos</a></li>
-            <li class="menu_item"><a th:href="@{/login}">Login</a></li>
+            <li class="menu_item" sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
+            </li>
+
+            <li class="menu_item" sec:authorize="isAuthenticated()">
+                <a th:href="@{/}">Tus Reservas</a>
+            </li>
+
+            <li class="menu_item" sec:authorize="isAuthenticated()">
+                <a href="javascript: document.logoutMobileForm.submit()" role="menuitem"> Logout</a>
+                <form name="logoutMobileForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Cerrar Sesión"/>
+                </form>
+            </li>
         </ul>
     </div>
 </div>
