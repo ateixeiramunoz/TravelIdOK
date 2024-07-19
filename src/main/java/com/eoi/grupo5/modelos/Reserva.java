@@ -23,8 +23,11 @@ public class Reserva {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "fechaReserva")
-    private LocalDateTime fechaReserva;
+    @Column(name = "fechaInicio")
+    private LocalDateTime fechaInicio;
+
+    @Column(name = "fechaFin")
+    private LocalDateTime fechaFin;
 
     @Basic(optional = false)
     private boolean cancelado = false;
@@ -51,7 +54,7 @@ public class Reserva {
     private Set<Actividad> actividades = new HashSet<>();
 
     @OneToOne
-    @JoinColumn(name = "idPago", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "idPago", referencedColumnName = "id")
     private Pago pago;
 
 }
