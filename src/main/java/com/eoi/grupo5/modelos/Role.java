@@ -1,6 +1,7 @@
 package com.eoi.grupo5.modelos;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,8 @@ public class Role implements Serializable {
     @Column(nullable = false)
     private String roleName;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @JsonBackReference
     private Set<Usuario> usuarios = new HashSet<>();
 
 }

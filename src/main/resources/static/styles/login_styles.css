@@ -529,6 +529,7 @@ section {
   transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
+
 /*********************************
 3.4 Menu
 *********************************/
@@ -541,7 +542,6 @@ section {
   -o-transform: translateY(-3px);
   transform: translateY(-3px);
   cursor: pointer;
-  margin-left: 20px;
 }
 .header.scrolled .hamburger {
   -webkit-transform: none;
@@ -581,11 +581,9 @@ section {
 .menu_item:last-child {
   margin-bottom: 0px;
 }
-
 .menu_logo {
   margin-bottom: 28px;
 }
-
 .menu_logo a img {
   width: 200px !important;
 }
@@ -594,7 +592,7 @@ section {
   position: relative;
   font-family: "Beyond";
   font-size: 36px;
-  color: #ffffff;
+  color: #f0e6bd;
   font-weight: 400;
 }
 .menu_item a::after {
@@ -659,7 +657,7 @@ section {
 }
 .menu_close_container:hover .menu_close,
 .menu_close_container:hover .menu_close::after {
-  background: #fa9e1c;
+  background: darkblue;
 }
 
 /*********************************

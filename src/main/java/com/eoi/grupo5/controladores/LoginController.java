@@ -38,7 +38,7 @@ public class LoginController {
             Usuario usuario = optionalUsuario.get();
             model.addAttribute("usuario", usuario);
             model.addAttribute("msg", "Usuario encontrado");
-            return "login";
+            return "redirect:/";
         } else {
             model.addAttribute("msg", "Usuario no encontrado");
             return "redirect:/login?error=true";

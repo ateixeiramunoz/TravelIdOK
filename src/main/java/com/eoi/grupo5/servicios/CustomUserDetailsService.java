@@ -32,6 +32,5 @@ public class CustomUserDetailsService implements UserDetailsService {
           String errorMessage = messageSource.getMessage("user.not.found", null, Locale.getDefault());
           throw new UsernameNotFoundException(errorMessage);
         }
-
     }
 }
