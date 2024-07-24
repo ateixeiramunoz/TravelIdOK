@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/habitaciones")
 public class HabitacionController {
 
     private final ServicioHabitacion servicio;
@@ -20,7 +22,7 @@ public class HabitacionController {
         this.servicio = servicioHabitacion;
     }
 
-    @GetMapping("/habitacion/{id}")
+    @GetMapping("/{id}")
     public String detallesHabitacion(@PathVariable Integer id, Model modelo) {
         Optional<Habitacion> habitacion = servicio.encuentraPorId(id);
         // Si no encontramos el hotel no hemos encontrado el hotel
@@ -40,9 +42,31 @@ public class HabitacionController {
             // Hotel no encontrado - htlm
             return "habitacionNoEncontrado";
         }
+    }
+
+
+    @GetMapping("/{id}/reservar")
+    public String reservarHabitacion(@PathVariable Integer id, Model modelo) {
+
+        Optional<Habitacion> habitacion = servicio.encuentraPorId(id);
+
+        // Si no encontramos el hotel no hemos encontrado el hotel
+        if (habitacion.isPresent()) {
+            modelo.addAttribute("habitacion", habitacion.get());
+            Precio precioActual = servicio.getPrecioActual(habitacion.get(), LocalDateTime.now());
+            modelo.addAttribute("precioActual", precioActual.getPrecio());
+
+            return "reservaHabitacion";
+        } else {
+            // Hotel no encontrado - htlm
+            return "habitacionNoEncontrado";
+        }
 
 
     }
+
+
+
 
 }
 
